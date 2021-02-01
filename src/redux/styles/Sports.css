@@ -1,0 +1,126 @@
+#sportsContainer {
+    position: relative;
+    margin: 0 20px;
+    width: 340px;
+    height: 800px;
+    background: #FBFBFB;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+}
+
+#sportsContainer h3 {
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #232338;
+    margin-top: 80px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000000;
+}
+
+.sportContainer {
+    width: 260px;
+    height: 120px;
+    max-height: 120px;
+    flex: 1 1 0; 
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.sportinnerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; 
+}
+
+.sportInnderLeftContainer {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 5px;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.sportInnderLeftContainer p {
+    margin: 10px auto;
+}
+
+
+.sportInnderMiddleContainer {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    margin: auto;
+    text-align: left;
+}
+
+.sportInnderMiddleContainer p {
+    /* margin: auto; */
+    text-align: left;
+    margin: 6px auto;
+}
+
+.sportValues {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.sportContainer img{
+    width: 62px;
+    height: 62px;
+    filter: brightness(0) invert(1);
+}
+
+.sportContainerActions {
+    height: 90%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sportContainerActions button {
+    background: #FFFFFF;
+    border: none;
+    border-radius: 2px;
+    padding: 3px 5px;
+}
+
+.sportContainerActions img{
+    width: 16px;
+    height: 16px;
+    filter: brightness(0)
+}
+
+#addNewSport {
+    background: #0064F6;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+#addNewSport img{
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1); 
+}

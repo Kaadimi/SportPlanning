@@ -1,0 +1,66 @@
+#planningOuterContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background: #F7F9FE;
+}
+
+#planningLeftContainer {
+    width: 950px;
+}
+
+#planningTopContainer {
+    background: #F7F9FE;
+    border-radius: 5px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#bannerLogo{
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding-left: 30px;
+}
+
+#planningTopContainer h1 {
+    font-style: normal;
+    font-weight: BOLD;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    margin: 0;
+}
+
+#planningTopContainer span {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+
+    color: #000000;
+}
+
+#planningTopContainer img {
+    width: 44px;
+    height: 44px;
+    filter: brightness(0);
+    margin-right: 20px;
+}
+
+.languagesDiv {
+    display: flex;
+}
+
+.languagesDiv button{
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 5px 10px;
+}
+
+#verticalDivider {
+    border-right: 2px solid #000000;
+}
