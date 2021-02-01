@@ -23,6 +23,7 @@ function SportsComponent({sports, labels, setLSports}) {
             const {name, min, max, offset, sessions, color} = sport
             let id2 = labels.indexOf(name.toLowerCase())
             
+            console.log(id2, labels.length)
             if (!edit && id2 >= 0)
                 dispatch(setError(t('sportExists')))
             else if (min >= max)
@@ -41,7 +42,7 @@ function SportsComponent({sports, labels, setLSports}) {
                 }
                 else
                 {
-                    setLSports(prev => new Map([...prev.entries(), [labels.length, {name, sessions, min, max, offset, color}]]))
+                    setLSports(prev => new Map([...prev.entries(), [labels.length + 1, {name, sessions, min, max, offset, color}]]))
                 }
                 setDialog(null)
             }
