@@ -24,7 +24,7 @@ function optimal_group_size(min, max, nb, offset)
 
 const compatible_students = (students, sports, groupSize, sportsCount) => {
     return new Promise(resolve => {
-        const len = sports.size
+        const len = sports.length
         const possible_choices = new Map()
         
         let index
@@ -55,9 +55,9 @@ const compatible_students = (students, sports, groupSize, sportsCount) => {
         }
         for (let i = 0; i < len; i++)
         {
-            const min = parseInt(sports.get(i).min)
-            const max = parseInt(sports.get(i).max)
-            groupSize[i] = optimal_group_size(min, max, sportsCount[i], sports.get(i).offset)
+            const min = parseInt(sports[i].min)
+            const max = parseInt(sports[i].max)
+            groupSize[i] = optimal_group_size(min, max, sportsCount[i], sports[i].offset)
         }
         resolve(possible_choices)
     })
@@ -111,7 +111,7 @@ function group_creator(possible_choices, sports, groupSize, sportsCount)
   
     return new Promise(async (resolve) => {
     const groups = new Map()
-    const len = sports.size
+    const len = sports.length
     let index = -1
     let sport1, sport2, current
     let v = 0
@@ -180,7 +180,7 @@ export const map_to_array = (map) => {
 const split_choices = (data, sports) => {
     return new Promise((resolve, reject) => {
       const len = data.length;
-      const sportsLen = sports.size
+      const sportsLen = sports.length
       const sportMap = new Map([...sports.entries()].map(sport => [sport[1].name.toLowerCase(), sport[0]]))
       const students = []
       const letters = /^[a-zA-Z\s]*$/;
@@ -217,7 +217,7 @@ const split_choices = (data, sports) => {
 const generateGroups = (students, sports) => {
     return new Promise((resolve) => {
         console.log("group gen")
-        const sportsLen = sports.size
+        const sportsLen = sports.length
         const groupSize = new Array(sportsLen).fill(0)
         const sportsCount = new Array(sportsLen).fill(0)
         compatible_students(students, sports, groupSize, sportsCount)

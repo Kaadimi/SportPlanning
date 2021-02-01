@@ -15,14 +15,14 @@ function SportSession({activity, location, ses, sports, groups}) {
     }
 
     useEffect(() => {
-        const sportSessions = sports.get(location.sport).sessions
+        const sportSessions = sports[location.sport].sessions
 
         if (!location.empty && location.indexes.length > sportSessions)
             setWarning(true)
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="sportDiv" style={!location.empty ? {background: warning ? "#ff0000" : sports.get(location.sport).color} : null}>
+        <div className="sportDiv" style={!location.empty ? {background: warning ? "#ff0000" : sports[location.sport].color} : null}>
             <div className="sportInsideDiv">
             <img alt="sessionIcon" src={warning ? `${process.env.PUBLIC_URL}/warning.svg` : `${process.env.PUBLIC_URL}${sportIcon(activity)}`}></img>
                 <p className="planningSport"><span>{activity}</span></p>

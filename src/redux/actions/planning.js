@@ -21,7 +21,7 @@ function first(classTable, schedule, schedule2, studentClash, groups, days, sess
     schedule[time_tem][spaces_tem] += 1
     schedule2[classes_index].add(i)
 
-    if (schedule[time_tem][spaces_tem] > sports.get(spaces_tem).sessions){
+    if (schedule[time_tem][spaces_tem] > sports[spaces_tem].sessions){
         cost++;
     }
     i++;
@@ -120,12 +120,12 @@ function monte_carlo(classTable, schedule, schedule2, studentClash, len, days, s
 
     if (current_time !== time_tem)
     {
-        if (schedule[current_time][current_space] > sports.get(current_space).sessions)
+        if (schedule[current_time][current_space] > sports[current_space].sessions)
         {
-            if (schedule[time_tem][current_space] < sports.get(current_space).sessions)
+            if (schedule[time_tem][current_space] < sports[current_space].sessions)
                 dif_cost++
         } else {
-            if (schedule[time_tem][current_space] >= sports.get(current_space).sessions)
+            if (schedule[time_tem][current_space] >= sports[current_space].sessions)
                 dif_cost--
         }
         if (current_index !== classes_index)
@@ -171,7 +171,7 @@ const create_time_table = (classTable, days, sessions) => {
 const planning = (groups, sports, days, sessions) => {
     return new Promise((resolve, reject) => {
         let total_time = days * sessions
-        let total_spaces = sports.size
+        let total_spaces = sports.length
       
         let cost = 0
         const classTable = new Map()

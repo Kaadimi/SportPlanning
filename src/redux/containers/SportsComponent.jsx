@@ -14,7 +14,7 @@ function SportsComponent({sports, labels, setLSports}) {
     const dispatch = useDispatch()
 
     const deleteSport = (name) => {
-        setLSports(prev => new Map([...prev.entries()].filter(value => value[1].name !== name)))
+        setLSports(prev => prev.filter(value => value.name !== name))
     }
 
     const addSport = ({sport, edit}) => {
@@ -32,17 +32,16 @@ function SportsComponent({sports, labels, setLSports}) {
             {
                 if (edit)
                 {
-                    setLSports(prev => new Map([...prev.entries()].map(value => {
-                            console.log(value)
-                        if (value[1].name === name)
-                            return [value[0], sport]
+                    setLSports(prev => prev.map(value => {
+                        if (value.name === name)
+                            return sport
                         else
                             return value
-                    })))
+                    }))
                 }
                 else
                 {
-                    setLSports(prev => new Map([...prev.entries(), [labels.length + 1, {name, sessions, min, max, offset, color}]]))
+                    setLSports(prev => [...prev, {name, sessions, min, max, offset, color}])
                 }
                 setDialog(null)
             }
@@ -65,7 +64,7 @@ function SportsComponent({sports, labels, setLSports}) {
             <div className="sportContainer">
                 <h3>SPORTS</h3>
             </div>
-            <ComponentOrder order={1} status={sports.size === 0 ? true : false}/>
+            <ComponentOrder order={1} status={sports.length === 0 ? true : false}/>
             {sports && [...sports.values()].map((sport, i) => {
                 return (
                     <div key={i} className="sportContainer" style={{background: sport.color}}>

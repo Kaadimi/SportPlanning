@@ -23,7 +23,7 @@ function Groups({ Lsports }) {
     return (
         <div className="middleContainers">
             <h2>{t('importTitle')}</h2>
-            <ComponentOrder order={2} status={!groups && Lsports.size > 0 ? true : false}/>
+            <ComponentOrder order={2} status={!groups && Lsports.length > 0 ? true : false}/>
             <FileFormat headers={["Firstname", "Lastname", "School", "Establishment", "Sport1", "Sport2"]}/>
             <form ref={inputForm} className="file-drop-area">
                 <span className="fake-btn">{t('chooseFile')}</span>
