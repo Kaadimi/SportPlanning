@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   transition: 2s;
+  background: #F7F9FE;
+  height: 100vh;
 }
 
 input, button {
