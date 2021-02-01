@@ -215,6 +215,7 @@ export const generatePlanning = (groups, sports, days, sessions) => {
             dispatch(setTimeTable(timeTable))
             dispatch(setLoading(false))
         })
+        .catch(error => dispatch(setLoading(false)))
     }
 }
 

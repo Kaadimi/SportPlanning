@@ -268,7 +268,7 @@ export const readExcel = (file, inputForm, sports, timeTable) => {
                     dispatch(setGroups(groups))
                 })
             })
-            .catch(error => {console.log(error);inputForm.current.reset();dispatch(setError(error))})
+            .catch(error => {dispatch(setLoading(false));inputForm.current.reset();dispatch(setError(error))})
         }
         else
             dispatch(setError("No file selected"))   
