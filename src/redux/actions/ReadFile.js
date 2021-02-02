@@ -71,7 +71,8 @@ function find_swap(arr, i, j, len)
   {
     if (f === i)
       continue;
-    for (let h = 0; h < arr[i].length; h++)
+    const arrLen = arr[i].length
+    for (let h = 0; h < arrLen; h++)
     {
       if (arr[i].indexOf(arr[f][h]) === -1)
       {
@@ -98,12 +99,13 @@ function remove_douplicates(groups)
                 for (let j = grLen; j >= 0; j--)
                 {
                     if (value[i].indexOf(value[i][j]) !== j)
-                        resolve(find_swap(value, i, j, len))
+                        find_swap(value, i, j, len)
+                    resolve(true)
                 }
             }
         }))
     })
-    return Promise.all(promises)
+    Promise.all(promises)
 }
 
 function group_creator(possible_choices, sports, groupSize, sportsCount)
@@ -155,7 +157,7 @@ function group_creator(possible_choices, sports, groupSize, sportsCount)
         }
         }
     }
-    
+
     await remove_douplicates(groups)
     resolve(groups)
   })
@@ -189,18 +191,17 @@ const split_choices = (data, sports) => {
         return reject("No sports Chosen")
       for (let i = 0; i < len; i++)
       {
-        const {FirstName, LastName, School, Establishment, Sport1, Sport2} = data[i]
-        
-        if (FirstName && LastName && School && Establishment && Sport1 && Sport2)
+        const {Firstname, Lastname, School, Establishment, Sport1, Sport2} = data[i]
+        if (Firstname && Lastname && School && Establishment && Sport1 && Sport2)
         {
-          if (!FirstName[0].match(letters) || !LastName[0].match(letters))
+          if (!Firstname[0].match(letters) || !Lastname[0].match(letters))
             continue
           const firstChoice = Sport1.trim().toLowerCase()
           if (sportMap.has(firstChoice))
           {
               const secondChoice = Sport2.trim().toLowerCase() 
               if (sportMap.has(secondChoice))
-                students.push({name: `${FirstName} ${LastName}`, School, Establishment, sport1: sportMap.get(firstChoice), sport2: sportMap.get(secondChoice)})
+                students.push({name: `${Firstname} ${Lastname}`, School, Establishment, sport1: sportMap.get(firstChoice), sport2: sportMap.get(secondChoice)})
               else
                 return reject(`${Sport2} is not a choosen sport`)
           }
@@ -216,7 +217,6 @@ const split_choices = (data, sports) => {
 
 const generateGroups = (students, sports) => {
     return new Promise((resolve) => {
-        console.log("group gen")
         const sportsLen = sports.length
         const groupSize = new Array(sportsLen).fill(0)
         const sportsCount = new Array(sportsLen).fill(0)

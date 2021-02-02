@@ -14,7 +14,11 @@ function SportsComponent({sports, labels, setLSports}) {
     const dispatch = useDispatch()
 
     const deleteSport = (name) => {
-        setLSports(prev => prev.filter(value => value.name !== name))
+        setLSports(prev => {
+            const ret = prev.filter(value => value.name !== name)
+            localStorage.setItem('sports', JSON.stringify(ret))
+            return ret;
+        })
     }
 
     const addSport = ({sport, edit}) => {
@@ -23,7 +27,6 @@ function SportsComponent({sports, labels, setLSports}) {
             const {name, min, max, offset, sessions, color} = sport
             let id2 = labels.indexOf(name.toLowerCase())
             
-            console.log(id2, labels.length)
             if (!edit && id2 >= 0)
                 dispatch(setError(t('sportExists')))
             else if (min >= max)
@@ -32,16 +35,25 @@ function SportsComponent({sports, labels, setLSports}) {
             {
                 if (edit)
                 {
-                    setLSports(prev => prev.map(value => {
-                        if (value.name === name)
-                            return sport
-                        else
-                            return value
-                    }))
+                    setLSports(prev => {
+                        const ret = prev.map(value => {
+                            if (value.name === name)
+                                return sport
+                            else
+                                return value
+                        })
+                        localStorage.setItem('sports', JSON.stringify(ret))
+                        return ret; 
+                    })
                 }
                 else
                 {
-                    setLSports(prev => [...prev, {name, sessions, min, max, offset, color}])
+                    setLSports(prev => {
+                        const ret = [...prev, {name, sessions, min, max, offset, color}] 
+                        localStorage.setItem('sports', JSON.stringify(ret))
+                        return ret;
+                        
+                    })
                 }
                 setDialog(null)
             }

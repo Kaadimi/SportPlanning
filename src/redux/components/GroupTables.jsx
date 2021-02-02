@@ -21,7 +21,7 @@ function GroupTables({groups, labels, students, setDialog}) {
                                     <p>#{group.id}</p>
                                     <p>{labels[group.sport]}</p>
                                 </div>
-                                <p id="studentRow">{group.students.map(student => <span id="studentName" key={student}>{students[student].name} </span>)} </p>
+                                <p id="studentRow">{group.students.map((student, i) => <span id="studentName" key={i}>{students[student].name} </span>)} </p>
                                 </div>)})
                     }
                 </div>

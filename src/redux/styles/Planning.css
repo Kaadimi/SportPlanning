@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
     background: #F7F9FE;
 }
 
@@ -63,4 +64,18 @@
 
 #verticalDivider {
     border-right: 2px solid #000000;
+}
+
+/* ********************* foooter ************************* */
+
+#footer {
+    position: absolute;
+    top: 60px;
+    right: 32px;
+}
+
+#footer img{
+    width: 25px;
+    height: 25px;
+    filter: brightness(0);
 }
