@@ -277,6 +277,7 @@
     padding: 2px;
     white-space: nowrap;
     border-radius: 3px;
+    margin: 0 3px;
 }
 
 #clashesDiv {

@@ -160,16 +160,6 @@ function group_creator(possible_choices, sports, groupSize, sportsCount)
     }
 
     await remove_douplicates(groups)
-    const values = [...groups.values()]
-    values.forEach((value, i) => {
-        const sportLen = value.length;
-        for (let j = 0; j < sportLen; j++)
-        {
-            console.log(i, value[j].length , groupSize[i])
-            if (value[j].length > groupSize[i])
-                console.log("over sized group")
-        }
-    })
     resolve(groups)
   })
 }

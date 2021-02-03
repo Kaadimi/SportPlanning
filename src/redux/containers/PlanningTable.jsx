@@ -11,7 +11,7 @@ function PlanningTable({ labels, setDialog, sports, groups }) {
     const { t } = useTranslation();
     const dispatch = useDispatch()
     const [clashDialog, setClashDialog] = useState(false)
-    const {days, sessions, timeTable, cost, clashes, loading} = useSelector(state => state)
+    const {days, sessions, students, timeTable, cost, clashes, loading} = useSelector(state => state)
     const colWidth = {width: `${100/sessions | 0}%`}
 
     return (
@@ -52,7 +52,7 @@ function PlanningTable({ labels, setDialog, sports, groups }) {
                                     return (
                                         <div id="planningCol" style={colWidth} key={"session" + i + j}>
                                             {labels.map((activity, h) => {
-                                                    return <SportSession key={"session" + i + j + h} activity={activity} location={findSportSessions(h, ses)} ses={ses} sports={sports} groups={groups}/>})
+                                                    return <SportSession key={"session" + i + j + h} activity={activity} location={findSportSessions(h, ses)} ses={ses} sports={sports} groups={groups} students={students}/>})
                                             }
                                         </div>
                                     )
