@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { findSportSessions } from '../actions/planning'
 import SportSession from "../components/SportSession"
 import "../styles/PlanningTable.css"
 import { useTranslation } from 'react-i18next'
+import { generatePlanning } from '../actions/planning'
+import { setError } from '../actions/Dialogs'
 
 function PlanningTable({ labels, setDialog, sports, groups }) {
     const { t } = useTranslation();
+    const dispatch = useDispatch()
     const [clashDialog, setClashDialog] = useState(false)
-    const {days, sessions, timeTable, cost, clashes} = useSelector(state => state)
+    const {days, sessions, timeTable, cost, clashes, loading} = useSelector(state => state)
     const colWidth = {width: `${100/sessions | 0}%`}
 
     return (
@@ -22,12 +25,17 @@ function PlanningTable({ labels, setDialog, sports, groups }) {
                 </div>
                 <div id="planningTableResult">
                     <p id={cost > 0 ? "errorColor" : null}>{t('generatedErrors')} {cost}</p>
-                    {clashes.length > 0 && <button onClick={() => setClashDialog(prev => !prev)}>{t('clashes')}</button>}
-                    {clashDialog && <div id="clashesDiv">
-                        {clashes.map((clash, i) => <div key={i} id="clashesBody">
-                            <span>{t('day')}: {clash.day}</span>
-                            <span>{`GROUP ${clash.group1} - GROUP ${clash.group2}`}</span>
-                        </div>)}
+                    {cost > 0 && <div>
+                        <div className="planningClashesActions">
+                            {clashes.length > 0 && <button onClick={() => setClashDialog(prev => !prev)}>{t('clashes')}</button>}
+                            {!loading && <button id="remakeButton" onClick={() => {groups ? dispatch(generatePlanning(groups, sports, days, sessions)) : dispatch(setError('noGroups'))}}>{t('remake')}</button>}
+                        </div>
+                        {clashDialog && <div id="clashesDiv">
+                            {clashes.map((clash, i) => <div key={i} id="clashesBody">
+                                <span>{t('day')}: {clash.day}</span>
+                                <span>{`GROUP ${clash.group1} - GROUP ${clash.group2}`}</span>
+                            </div>)}
+                        </div>}
                     </div>}
                 </div>
                 <div id="planningHeader">

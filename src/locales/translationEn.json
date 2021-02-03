@@ -34,5 +34,13 @@
     "sorry": "Sorry",
     "sportExists": "Sport already exist",
     "minMax": "The minimaum group size can't surpass or equal the maximaum",
-    "formNotComplete": "Form is incomplete"
+    "formNotComplete": "Form is incomplete",
+    "group": "Group",
+    "remake": "Remake",
+    "fileError": "No file selected",
+    "planningError": "Missing information: groups, sports, days, sessions",
+    "noSportError": "No sports Chosen",
+    "undefiendSport": "A student sport choice is not an option",
+    "badFile": "Incorrect import format",
+    "wrongFormat": "File is not an excel file"
 }

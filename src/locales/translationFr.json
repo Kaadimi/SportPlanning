@@ -34,5 +34,13 @@
     "sorry": "Désolé",
     "sportExists": "Sport existe déjà",
     "minMax": "La taille du groupe minimum ne peut pas dépasser ou égaler le maximum",
-    "formNotComplete": "Le formulaire est incomplet"
+    "formNotComplete": "Le formulaire est incomplet",
+    "group": "Groupe",
+    "remake": "Refaire",
+    "fileError": "Aucun fichier sélectionné",
+    "planningError": "Informations manquantes: groupes, sports, journées, sessions",
+    "noSportError": "Aucun sport choisi",
+    "undefiendSport": "Un choix de sport étudiant n'est pas une option",
+    "badFile": "Format d'importation incorrect",
+    "wrongFormat": "Le fichier n'est pas un fichier Excel"
 }

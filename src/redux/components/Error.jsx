@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setError } from '../actions/Dialogs';
 import "../styles/Dialogs.css"
@@ -11,7 +12,7 @@ function Error({ error }) {
         <div id="dialogContainer">
             {error && <div className="errorDiv">
                 <img alt="warningIcon" src={process.env.PUBLIC_URL + "/warning.svg"}></img>
-                <p><span>{t('sorry')}, </span>{error}</p>
+                <p><span>{t('sorry')}, </span>{t(`${error}`)}</p>
                 <button onClick={() => dispatch(setError(null))} id="closeError">
                     <img alt="closeIcon" src={process.env.PUBLIC_URL + "/close.svg"}></img> 
                 </button>

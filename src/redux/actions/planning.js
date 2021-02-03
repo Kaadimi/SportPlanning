@@ -1,4 +1,5 @@
 import { SET_STUDENTS, SET_TIME_TABLE, SET_GROUPS, SET_SPORTS, SET_LOADING } from "."
+import { setError } from "./Dialogs"
 
 const getRandomInt = (max) => {
     return Math.floor(Math.random() * max)
@@ -209,6 +210,8 @@ const planning = (groups, sports, days, sessions) => {
 
 export const generatePlanning = (groups, sports, days, sessions) => {
     return dispatch => {
+        if (!groups || !sports || days <= 0 || sessions <= 0)
+            return dispatch(setError("planningError"))
         dispatch(setLoading(true))
         planning(groups, sports, days, sessions)
         .then(timeTable => {

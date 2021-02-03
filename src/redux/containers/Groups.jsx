@@ -31,8 +31,8 @@ function Groups({ Lsports }) {
                 <input onChange={(e) => dispatch(readExcel(e.target.files[0], inputForm, Lsports, timeTable ? true : false))} accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" className="file-input" type="file"/>
             </form>
             <div id="groupsActions">
-                <button id={groups ? "showGroups" : "disabledBtn"} onClick={() => {groups ? setDialog(1) : dispatch(setError(t('noGroups')))}}>{t('showGroups')}</button>
-                <button id={groups ? "showGraph" : "disabledBtn"} onClick={() => {groups ? setDialog(2) : dispatch(setError(t('noGroups')))}}>{t('showGraph')}</button>
+                <button id={groups ? "showGroups" : "disabledBtn"} onClick={() => {groups ? setDialog(1) : dispatch(setError('noGroups'))}}>{t('showGroups')}</button>
+                <button id={groups ? "showGraph" : "disabledBtn"} onClick={() => {groups ? setDialog(2) : dispatch(setError('noGroups'))}}>{t('showGraph')}</button>
             </div>
             {groups && students && dialog === 1 && <GroupTables groups={groups} labels={labels} students={students} setDialog={setDialog}/>}
             {sports && dialog === 2 && <Graph sportsCount={sportsCount} groupSize={groupSize} labels={labels} colors={colors} setDialog={setDialog}/>}

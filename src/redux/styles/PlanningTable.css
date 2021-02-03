@@ -44,12 +44,26 @@
     color: #ff3c00 !important;
 }
 
+.planningClashesActions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#remakeButton {
+    background: #0099FF !important;
+}
+
 #planningTableResult button{
-    padding: 5px 10px;
+    padding: 5px 15px;
     background: #ff3c00;
     border: none;
     color: #ffffff;
     border-radius: 5px;
+    margin: 3px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 #planningHeader {
@@ -217,16 +231,21 @@
     top: 5px;
     right: 5px;
     text-transform: uppercase;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 50%;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color: rgb(5, 5, 5);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    /* font-weight: 700; */
+    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     margin: auto;
     cursor: pointer;
 }
 .planningGroup img {
+    margin-left: 5px;
     width: 20px;
     height: 20px;
 }
@@ -241,12 +260,13 @@
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
     width: auto;
-    height: 25px;;
+    height: 35px;;
     top: 25px;bottom: 0;left: 0;right: 0;
     margin: auto;
     border-radius: 3px;
     font-size: 19px;
     display: flex;
+    overflow-x: auto;
     justify-content: space-around;
     align-items: center;
     color: black;
@@ -255,6 +275,7 @@
 #groupsPopup span {
     background-color: rgb(226, 228, 231);
     padding: 2px;
+    white-space: nowrap;
     border-radius: 3px;
 }
 

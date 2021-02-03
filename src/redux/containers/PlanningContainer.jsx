@@ -34,8 +34,8 @@ function PlanningContainer() {
                     </div>
                 </div>
                 <div id="groupsActions">
-                    <button id={groups ? "showGroups" : "disabledBtn"} onClick={() => {groups ? dispatch(generatePlanning(groups, sports, days, sessions)) : dispatch(setError(t('noGroups')))}}>{t('generatePlanning')}</button>
-                    <button id={timeTable ? "showGraph" : "disabledBtn"} onClick={() => {timeTable ? setDialog(true) : dispatch(setError(t('noPlanning')))}}>{t('showPlanning')}</button>
+                    <button id={groups ? "showGroups" : "disabledBtn"} onClick={() => {groups ? dispatch(generatePlanning(groups, sports, days, sessions)) : dispatch(setError('noGroups'))}}>{t('generatePlanning')}</button>
+                    <button id={timeTable ? "showGraph" : "disabledBtn"} onClick={() => {timeTable ? setDialog(true) : dispatch(setError('noPlanning'))}}>{t('showPlanning')}</button>
                 </div>
                 <InfoContainer title={"INFO"} info={t('info')}/>
                 {dialog && timeTable && <PlanningTable labels={labels} sports={sports} groups={groups} setDialog={setDialog}/>}

@@ -121,8 +121,9 @@ function group_creator(possible_choices, sports, groupSize, sportsCount)
     for (let i = 0; i < len; i++)
     {
         groups.set(i, [])
-        for (let j = 0; j < (sportsCount[i] / groupSize[i]); j++)
-        groups.get(i).push([])
+        const nbOfGroups = sportsCount[i] / groupSize[i]
+        for (let j = 0; j < nbOfGroups; j++)
+            groups.get(i).push([])
     }
 
     for (const [key, value] of possible_choices)
@@ -159,6 +160,16 @@ function group_creator(possible_choices, sports, groupSize, sportsCount)
     }
 
     await remove_douplicates(groups)
+    const values = [...groups.values()]
+    values.forEach((value, i) => {
+        const sportLen = value.length;
+        for (let j = 0; j < sportLen; j++)
+        {
+            console.log(i, value[j].length , groupSize[i])
+            if (value[j].length > groupSize[i])
+                console.log("over sized group")
+        }
+    })
     resolve(groups)
   })
 }
@@ -188,7 +199,7 @@ const split_choices = (data, sports) => {
       const letters = /^[a-zA-Z\s]*$/;
 
       if (sportsLen === 0)
-        return reject("No sports Chosen")
+        return reject("noSportError")
       for (let i = 0; i < len; i++)
       {
         const {Firstname, Lastname, School, Establishment, Sport1, Sport2} = data[i]
@@ -203,13 +214,13 @@ const split_choices = (data, sports) => {
               if (sportMap.has(secondChoice))
                 students.push({name: `${Firstname} ${Lastname}`, School, Establishment, sport1: sportMap.get(firstChoice), sport2: sportMap.get(secondChoice)})
               else
-                return reject(`${Sport2} is not a choosen sport`)
+                return reject('undefiendSport')
           }
           else
-                return reject(`${Sport1} is not a choosen sport`)
+                return reject('undefiendSport')
         }
         else
-          return reject("Bad file format")
+          return reject("badFile")
       }
       resolve(students)
     })
@@ -242,7 +253,7 @@ export const readExcel = (file, inputForm, sports, timeTable) => {
         if (file) {
             const promise = new Promise((resolve, reject) => {
                 if (!file_type(file.name))
-                    return reject("File is not an excel file")
+                    return reject("wrongFormat")
                 const fileReader = new FileReader()
                 fileReader.readAsArrayBuffer(file)
         
@@ -271,7 +282,7 @@ export const readExcel = (file, inputForm, sports, timeTable) => {
             .catch(error => {dispatch(setLoading(false));inputForm.current.reset();dispatch(setError(error))})
         }
         else
-            dispatch(setError("No file selected"))   
+            dispatch(setError("fileError"))   
     }
 }
 
@@ -297,7 +308,7 @@ function excel_format(timeTable, groups, students, sports)
               for (let k = 0; k < groupLen; k++)
               {
                 const {name, School, Establishment} = students[groups[group].students[k]]
-                result.push({Name: name, School, Establishment, Sport: sports[timeTable[i][j][h].sport], Day: i + 1, Session: j + 1})
+                result.push({Name: name, School, Establishment, Sport: sports[timeTable[i][j][h].sport], Group: + group, Day: i + 1, Session: j + 1})
                 resolve(true)
             }
             }

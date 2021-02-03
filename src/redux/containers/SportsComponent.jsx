@@ -28,9 +28,9 @@ function SportsComponent({sports, labels, setLSports}) {
             let id2 = labels.indexOf(name.toLowerCase())
             
             if (!edit && id2 >= 0)
-                dispatch(setError(t('sportExists')))
+                dispatch(setError('sportExists'))
             else if (min >= max)
-                dispatch(setError(t('minMax')))
+                dispatch(setError('minMax'))
             else if (name && min && max && sessions && color && offset >= 0)
             {
                 if (edit)
@@ -58,10 +58,10 @@ function SportsComponent({sports, labels, setLSports}) {
                 setDialog(null)
             }
             else
-                dispatch(setError(t('formNotComplete')))
+                dispatch(setError('formNotComplete'))
         }
         else
-            dispatch(setError(t('formNotComplete')))
+            dispatch(setError('formNotComplete'))
     }
 
     const sportIcon = icon => {
@@ -73,7 +73,7 @@ function SportsComponent({sports, labels, setLSports}) {
 
     return (
         <div id="sportsContainer">
-            <div className="sportContainer">
+            <div id="sportContainerTitle" className="sportContainer">
                 <h3>SPORTS</h3>
             </div>
             <ComponentOrder order={1} status={sports.length === 0 ? true : false}/>

@@ -10,6 +10,36 @@
     width: 950px;
 }
 
+@media only screen and (max-width: 900px)
+{
+    #planningOuterContainer {
+        flex-direction: column;
+    }
+    
+    #planningLeftContainer {
+        order: 2;
+    }
+    #sportsContainer {
+        order: 1;
+        flex-direction: row;
+        width: 950px;
+        margin: auto;
+        overflow-x: auto;
+        height: 280px;
+    }
+
+    #sportContainerTitle {
+        display: none !important;
+        opacity: 0;
+    }
+
+    .sportContainer {
+        margin: 10px;
+        min-width: 280px;
+        box-sizing: border-box;
+    }
+}
+
 #planningTopContainer {
     background: #F7F9FE;
     border-radius: 5px;
@@ -39,7 +69,6 @@
     font-weight: 300;
     font-size: 20px;
     line-height: 28px;
-
     color: #000000;
 }
 
@@ -48,6 +77,12 @@
     height: 44px;
     filter: brightness(0);
     margin-right: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+    #planningTopContainer span {
+        display: none;
+    }
 }
 
 .languagesDiv {
