@@ -202,7 +202,7 @@ const split_choices = (data, sports) => {
           {
               const secondChoice = Sport2.trim().toLowerCase() 
               if (sportMap.has(secondChoice))
-                students.push({name: `${Firstname} ${Lastname}`, School, Establishment, sport1: sportMap.get(firstChoice), sport2: sportMap.get(secondChoice)})
+                students.push({Firstname, Lastname, School, Establishment, sport1: sportMap.get(firstChoice), sport2: sportMap.get(secondChoice)})
               else
                 return reject('undefiendSport')
           }
@@ -297,8 +297,8 @@ function excel_format(timeTable, groups, students, sports)
               const groupLen = groups[group].students.length;
               for (let k = 0; k < groupLen; k++)
               {
-                const {name, School, Establishment} = students[groups[group].students[k]]
-                result.push({Name: name, School, Establishment, Sport: sports[timeTable[i][j][h].sport], Group: + group, Day: i + 1, Session: j + 1})
+                const {Firstname, Lastname, School, Establishment} = students[groups[group].students[k]]
+                result.push({Firstname, Lastname, School, Establishment, Sport: sports[timeTable[i][j][h].sport], Group: + group, Day: i + 1, Session: j + 1})
                 resolve(true)
             }
             }

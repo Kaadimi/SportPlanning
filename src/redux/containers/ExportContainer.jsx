@@ -17,7 +17,7 @@ function ExportContainer() {
         <div className="middleContainers">
             <h2>{t('exportTitle')}</h2>
             <ComponentOrder order={4} status={timeTable ? true : false}/>
-            <FileFormat headers={["Name", "School", "Establishment", "Sport", "Group", "Day", "Session"]}/>
+            <FileFormat headers={["Firstame", "Lastname", "School", "Establishment", "Sport", "Group", "Day", "Session"]}/>
             <button id={timeTable ? "exportBtn" : "disabledExport"} onClick={() => {timeTable ? downloadPlanning(timeTable, groups, students, labels) : dispatch(setError('noPlanning'))}}>{t('exportPlanning')}</button>
         </div>
     )

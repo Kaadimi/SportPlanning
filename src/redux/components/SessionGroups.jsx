@@ -20,7 +20,7 @@ function SessionGroups({groups, students, ses, indexes, setDialog}) {
                     </div>
                 </div>
                 <div id="studentDialogContainer">
-                    {groups[id].students.map((student, i) => <span key={i}>{students[student].name} </span>)}
+                    {groups[id].students.map((student, i) => <span key={i}>{students[student].Firstname} {students[student].Lastname} </span>)}
                 </div>
             </div>
         </div>
